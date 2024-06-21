@@ -27,6 +27,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('Elias Zeitunian')
+            ->darkModeBrandLogo(asset('images/logotemp.png'))
+            ->brandLogoHeight(fn() => auth()->check() ? '1.6rem' : '3rem')
+            ->favicon(asset('images/ez.ico'))
             ->colors([
                 'primary' => Color::Amber,
             ])
