@@ -94,7 +94,8 @@ class PropertyResource extends Resource
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->html(),
                 Tables\Columns\TextColumn::make('days_from_created')
                     ->label('DOC')
                     ->sortable(),
@@ -197,5 +198,17 @@ class PropertyResource extends Resource
     }
     public static function getNavigationIcon(): string {
         return 'heroicon-o-home-modern';
+    }
+
+    #poner link
+    public static function getTableColumns(): array
+    {
+        return [
+            TextColumn::make('name')
+                ->formatUsing(function ($value, $record) {
+                    return '<a href="' . $record->link . '">' . $value . '</a>';
+                })->html(),
+            // Añade aquí otras columnas necesarias
+        ];
     }
 }
