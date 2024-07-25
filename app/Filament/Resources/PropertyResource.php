@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 
 class PropertyResource extends Resource
 {
@@ -38,8 +39,7 @@ class PropertyResource extends Resource
                 Forms\Components\TextInput::make('neighboorhood')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('map_link')
-                    ->maxLength(255)
+                Map::make('map_link')
                     ->default(null),
                 Forms\Components\TextInput::make('agent_link')
                     ->required()
