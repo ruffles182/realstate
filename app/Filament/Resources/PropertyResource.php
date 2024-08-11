@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
+use App\Filament\Resources\PropertyResource\RelationManagers\StatusChangesRelationManager;
 
 class PropertyResource extends Resource
 {
@@ -70,9 +71,11 @@ class PropertyResource extends Resource
                 Forms\Components\TextInput::make('type')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('status')
+                Forms\Components\Select::make('status_id')
                     ->required()
-                    ->maxLength(255),
+                    ->relationship('status', 'name')
+                    ->preload()
+                    ->searchable(),
                 Forms\Components\TextInput::make('mts_const')
                     ->numeric()
                     ->default(null),
@@ -150,7 +153,7 @@ class PropertyResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\TextColumn::make('status.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mts_const')
                     ->numeric()
@@ -184,7 +187,7 @@ class PropertyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            StatusChangesRelationManager::class,
         ];
     }
 

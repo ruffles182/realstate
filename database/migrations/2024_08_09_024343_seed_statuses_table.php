@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // Insertar estados en la tabla 'statuses'
+        DB::table('statuses')->insert([
+            ['name' => 'For Sale'],
+            ['name' => 'Under Contract'],
+            ['name' => 'Contract Pending'],
+            ['name' => 'Price Reduction'],
+            ['name' => 'Expired'],
+        ]);
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        //
+    }
+};
