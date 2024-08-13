@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('properties', function (Blueprint $table) {
-            $table->foreignId('area_id')
+            /*$table->foreignId('area_id')
                 ->default(1)
                 ->constrained()
                 ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnUpdate();*/
         });
     }
 

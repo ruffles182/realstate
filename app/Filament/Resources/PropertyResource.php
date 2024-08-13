@@ -210,7 +210,7 @@ class PropertyResource extends Resource
             TextColumn::make('name')
                 ->formatUsing(function ($value, $record) {
                     return '<a href="' . $record->link . '">' . $value . '</a>';
-                })->html(),
+                })->html()->wrap(),
             // Añade aquí otras columnas necesarias
         ];
     }

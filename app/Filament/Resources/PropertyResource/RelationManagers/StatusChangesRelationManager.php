@@ -48,7 +48,11 @@ class StatusChangesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('status')
             ->columns([
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('created_at')->label('Date'),
+                Tables\Columns\TextColumn::make('status.name'),
+                Tables\Columns\TextColumn::make('property.name'),
+                Tables\Columns\TextColumn::make('currency'),
+                Tables\Columns\TextColumn::make('price'),
             ])
             ->filters([
                 //

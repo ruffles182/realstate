@@ -13,7 +13,7 @@ return new class extends Migration
     {
         DB::table('areas')->insert([
             'name' => 'Sin Area',
-            'active' => true,
+            //'active' => true,
             'created_at' => now(),
             'updated_at' => now()
         ]);
